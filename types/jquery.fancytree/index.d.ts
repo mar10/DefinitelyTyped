@@ -58,8 +58,11 @@ declare namespace Fancytree {
         /** Return the number of nodes. */
         count(): number;
 
-        /** Write to browser console if debugLevel >= 2 (prepending tree name)  */
+        /** Write to browser console if debugLevel >= 4 (prepending tree name)  */
         debug(msg: any): void;
+
+        /** Write error to browser console if debugLevel >= 1 (prepending tree name)  */
+        error(msg: any): void;
 
         /** [ext-filter] Dimm or hide whole branches.
          * @returns {integer} count
@@ -135,7 +138,7 @@ declare namespace Fancytree {
         /** Return true if the tree control has keyboard focus */
         hasFocus(): boolean;
 
-        /** Write to browser console if debugLevel >= 1 (prepending tree name)  */
+        /** Write to browser console if debugLevel >= 3 (prepending tree name)  */
         info(msg: any): void;
 
         /**  [ext-edit] Check if any node in this tree in edit mode. */
@@ -188,7 +191,7 @@ declare namespace Fancytree {
          */
         visit(fn: (node: FancytreeNode) => any): boolean;
 
-        /** Write warning to browser console (prepending tree info) */
+        /** Write warning to browser console if debugLevel >= 2 (prepending tree info) */
         warn(msg: any): void;
 
         /** Temporarily suppress rendering to improve performance on bulk-updates.
@@ -311,7 +314,7 @@ declare namespace Fancytree {
          */
         countChildren(deep?: boolean): number;
 
-        /** Write to browser console if debugLevel >= 2 (prepending node info) */
+        /** Write to browser console if debugLevel >= 4 (prepending node info) */
         debug(msg: any): void;
 
         /** [ext-edit] Create a new child or sibling node and start edit mode.
@@ -329,6 +332,9 @@ declare namespace Fancytree {
 
         /** [ext-edit] Start inline editing of current node title.  */
         editStart(): void;
+
+        /** Write error to browser console if debugLevel >= 1 (prepending node info) */
+        error(msg: any): void;
 
         /** Find all nodes that contain `match` in the title.
          *
@@ -409,7 +415,7 @@ declare namespace Fancytree {
         /** Return true if node has keyboard focus. */
         hasFocus(): boolean;
 
-        /** Write to browser console if debugLevel >= 1 (prepending node info)  */
+        /** Write to browser console if debugLevel >= 3 (prepending node info)  */
         info(msg: string): void;
 
         /** Return true if node is active (see also FancytreeNode.isSelected). */
@@ -631,7 +637,7 @@ declare namespace Fancytree {
         visitParents(fn: (node: FancytreeNode) => any, includeSelf?: boolean): boolean;
 
         /**
-         * Write warning to browser console (prepending node info)
+         * Write warning to browser console if debugLevel >= 2 (prepending node info)
          */
         warn(msg: any): void;
         //#endregion
@@ -750,8 +756,8 @@ declare namespace Fancytree {
         checkbox?: boolean;
         /** Defines what happens, when the user click a folder node. (default: activate_dblclick_expands) */
         clickFolderMode?: FancytreeClickFolderMode;
-        /** 0..2 (null: use global setting $.ui.fancytree.debugInfo) */
-        debugLevel?: number;
+        /** 0..2 (null: use global setting $.ui.fancytree.debugLevel) */
+        debugLeçvel?: number;
         /** callback(node) is called for new nodes without a key. Must return a new unique key. (default null: generates default keys like that: "_" + counter) */
         defaultKey?: (node: FancytreeNode) => string;
         /** Accept passing ajax data in a property named `d` (default: true). */
@@ -879,4 +885,3 @@ declare namespace Fancytree {
         warn(msg: string): void;
     }
 }
-

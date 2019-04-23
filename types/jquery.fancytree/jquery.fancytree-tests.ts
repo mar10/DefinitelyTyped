@@ -64,16 +64,16 @@ activeNode.addChildren({
 
 tree.loadKeyPath("/1/2", function (node, status) {
 	if (status === "loaded") {
-		console.log("loaded intermiediate node " + node);
-	} else if (status === "ok") {                
+		console.log("loaded intermediate node " + node);
+	} else if (status === "ok") {
 		node.setActive();
 	}
 });
 
-var node = $.ui.fancytree.getNode($("#tree"));        
+var node = $.ui.fancytree.getNode($("#tree"));
 alert($.ui.fancytree.version);
-var f = $.ui.fancytree.debounce(50, (a : number) => { console.log(a); }, true);        
-f(2);   
+var f = $.ui.fancytree.debounce(50, (a : number) => { console.log(a); }, true);
+f(2);
 
 node = tree.getFirstChild();
 node.setExpanded().done(function () {
